@@ -1,0 +1,30 @@
+1. How does logistic regression differ from linear regression?
+The fundamental difference is their purpose and output. Linear regression predicts a continuous numerical value (like a price or temperature) by fitting a straight line to the data, resulting in an unbounded output. In contrast, logistic regression is a classification algorithm that predicts the probability of an observation belonging to a discrete class (like 'yes' or 'no'). It uses a sigmoid function to transform its output into a probability between 0 and 1, creating an 'S'-shaped decision boundary rather than a straight line.
+
+2. What is the sigmoid function?
+The sigmoid function is a mathematical function that takes any real number as input and maps it to a value between 0 and 1. In logistic regression, it acts as the activation function, converting the output of a linear equation into a probability. This allows the model to predict the likelihood of an instance belonging to the positive class. Its characteristic 'S'-shaped curve is ideal for modeling binary outcomes, as it provides a smooth transition between the two classes.
+
+3. What is precision vs recall?
+Precision and recall are two key classification metrics that evaluate a model's performance on the positive class. Precision answers the question, "Of all the times we predicted positive, how often were we correct?" and it focuses on minimizing false positives, which is critical in tasks like spam filtering. Recall, on the other hand, answers, "Of all the actual positive cases, how many did we identify?" and focuses on minimizing false negatives, which is vital in contexts like medical diagnosis where missing a case is costly. There is often a trade-off between the two; increasing one can decrease the other.
+
+4. What is the ROC-AUC curve?
+The ROC (Receiver Operating Characteristic) curve is a graph that illustrates a classifier's performance by plotting the True Positive Rate (Recall) against the False Positive Rate at various decision thresholds. The AUC (Area Under the Curve) is a single score that represents the entire area under this curve. An AUC of 1.0 indicates a perfect classifier, while an AUC of 0.5 represents a model with no skill (random guessing). Its main advantage is being threshold-invariant, providing a robust measure of the model's ability to distinguish between classes.
+
+5. What is the confusion matrix?
+A confusion matrix is a table that summarizes a classification model's performance by showing the counts of correct and incorrect predictions for each class. In a binary setting, it's a 2x2 grid containing four values: True Positives (correctly predicted positive), True Negatives (correctly predicted negative), False Positives (incorrectly predicted positive, or a Type I error), and False Negatives (incorrectly predicted negative, or a Type II error). This matrix is the foundation for calculating most other classification metrics, including precision, recall, and accuracy.
+
+6. What happens if classes are imbalanced?
+When classes are imbalanced, one class significantly outnumbers the other, causing major problems for model training and evaluation. A model can achieve high accuracy by simply always predicting the majority class, making it a useless metric. The model will be biased, failing to learn the patterns of the minority class and resulting in poor recall for the very cases you're often trying to predict (e.g., fraud or disease). To handle this, you must use more appropriate metrics like the F1-score or AUC and employ techniques like resampling (e.g., SMOTE) or using class weights during training.
+
+7. How do you choose the threshold?
+Choosing the classification threshold (the probability cutoff, default 0.5) is a business decision, not just a technical one, and it depends on the relative cost of false positives versus false negatives. If you need to maximize recall and avoid missing positive cases (e.g., cancer screening), you would lower the threshold to be more sensitive, accepting more false alarms. Conversely, if you need to maximize precision and avoid false alarms (e.g., a critical spam filter), you would raise the threshold to require more confidence before making a positive prediction.
+
+8. Can logistic regression be used for multi-class problems?
+Yes, logistic regression can be extended for multi-class classification. The most common method is One-vs-Rest (OvR), where K separate binary classifiers are trained for K classes; each classifier is trained to distinguish one class from all the others. A prediction is made by choosing the class that returns the highest probability from its respective classifier. Alternatively, Multinomial Logistic Regression uses a softmax function instead of a sigmoid, which directly outputs a probability distribution across all K classes, making it a natural extension for multi-class problems.
+
+
+
+
+
+
+
